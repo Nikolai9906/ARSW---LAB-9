@@ -42,10 +42,24 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+> Azure Function es una solución para ejecutar fácilmente pequeños fragmentos de código o “funciones” en la nube. Toma los conceptos básicos de los ya conocidos WebJobs y los amplía de forma interesante.
 * ¿Qué es serverless?
+> Es un modelo de ejecucion en el cual dejas de usar un servidor físico o uno en la nube claramente identificados por unos contenedores temporales y sin estado donde se ejecutan los códigos de las aplicaciones. Estos contenedores se crean en el momento que ejecutas la aplicación y luego desaparecen, por lo que el servidor pasa a ser una parte menos visible del sistema. Esta tecnología se asocia con FaaS que significa Function as a Service, que fue creada en 2014 por hook.io y que luego se ha ido desarrollando mediante proyectos tan importantes como Microsoft Azure Functions, IBM/Apache OpenWhisk, Google Cloud Functions o AWS Lambda.
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+> Runtime carga todas las aplicaciones de un programa y las ejecuta en una plataforma. En este caso desde la paltaforma de Azure se tiene disponibilidad de lenguajes como .NET, Nodejs, Python, y Java. Una de las implicaciones mas importante son que dependiendo el tipo de plan que se seleccione esto afectara el tiempo de salida (timeout) y el cache.
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+> Es necesario por el tipo de operaciones de almacenamiento y administracion que se realizan en la Funcion App.
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
+> Consumption: Es un plan que cobra por el consumo de recursos y ejecuciones por segundo. En cuanto a su precio contiene una mensualidad gratuita de 1 millon de solicitudes y 400.000 GB de consumo. El plan Azure Funcitons Premium ofrece un mejor rendimiento y factura por segundo en funcion del consumo en funciones Premium.
+> Premium plan: Ofrece las mismas funciones de escalado utilizando el plan de consumo con un mejor rendimiento y acceso a VNET. El plan Azure Functions Premium se factura en funcion del consumo de vCPU y memoria.
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+> Esto sucede ya que en ciertos casos se genera numeros muy grandes en las peticiones, tenienod en cuenta el plan de Consumption que fue el que se escogio la memoria se llena rapido y no permite que la memorizacion funcion de una manera correcta. Otro punto de vista es que si el numero viene siendo muy grande esto podria llegar a exceder el limite de recursion que proporciona el programa.
 * ¿Cómo funciona el sistema de facturación de las Function App?
+> Depende del consumo de recursos y ejecuciones por segundo
 * Informe
+> ![](images/newman.png)
+>
+> ![](images/newman2.png)
+> Podemos observar que para las peticiones se tuvo un acierto del 100%, ademas que su tiempo varia entre 40 s y 1m ya que esto difiere mucho del tamano de la solicitud y nivel de procesamiento.
+
+
